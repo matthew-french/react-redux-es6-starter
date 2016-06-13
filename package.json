@@ -1,8 +1,12 @@
 {
-  "name": "pluralsight-redux-starter",
-  "version": "1.0.0",
-  "description": "Starter kit for React and Redux Pluralsight course by Cory House",
-  "author": "Cory House",
+  "name": "react-redux-es6-starter",
+  "version": "1.0.1",
+  "description": "React Redux ES6 Tutorial from Cory House turtorial on Pluralsight.",
+  "scripts": {
+    "prestart": "babel-node tools/startMessage.js",
+    "start": "babel-node tools/srcServer.js"
+  },
+  "author": "Matthew French",
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "6.8.0",
