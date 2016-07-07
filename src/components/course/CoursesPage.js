@@ -25,26 +25,31 @@ class CoursePage extends React.Component {
     }
     
     courseRow(course, index) {
-        return <div key={index}>{course.title}</div>;
+        return <li key={index}>{course.title}</li>;
     }
-    
+
     render() {
-        debugger;
         return (
             <div>
                 <h1>Courses</h1>
-                {this.props.courses.map(this.courseRow)}
+
+                <ul>
+                    {this.props.courses.map(this.courseRow)}
+                </ul>
+
                 <h2>Add Course</h2>
+
                 <input
                     type="text"
-                    onChange={this.onTitleChange}
-                    value={this.state.course.title} />
+                    value={this.state.course.title}
+                    onChange={this.onTitleChange} />
+
                 
                 <input
                     type="submit"
                     value="Save"
                     onClick={this.onClickSave} />
-            
+                
             </div>
         );
     }
@@ -56,7 +61,6 @@ CoursePage.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-    debugger;
     return {
         courses: state.courses
     };
