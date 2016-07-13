@@ -9,10 +9,6 @@ class CoursePage extends React.Component {
     constructor(props, context) {
         super(props, context);
     }
-    
-    courseRow(course, index) {
-        return <li key={index}>{course.title}</li>;
-    }
 
     render() {
         const {courses} = this.props;
@@ -21,7 +17,7 @@ class CoursePage extends React.Component {
             <div>
                 <h1>Courses</h1>
                 <CourseList courses={courses}/>
-            </div> 
+            </div>
         );
     }
 }
