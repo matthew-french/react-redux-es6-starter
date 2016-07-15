@@ -3,16 +3,16 @@ import {Link} from 'react-router';
 import TestComp from '../common/TestComp';
 
 class HomePage extends React.Component {
-    render() {
-        return (
-            <div className="jumbotron">
-                <h1>Administration</h1>
-                <p>React, Redux and React Router in ES6 for ultra-responsive web apps.</p>
-                <Link to="about" className="btn btn-primary btn-lg">learn more</Link>
-                <TestComp/>
-            </div>
-        );
-    }
+  render () {
+    return (
+      <div className="jumbotron">
+        <h1>Administration</h1>
+        <p>React, Redux and React Router in ES6 for ultra-responsive web apps.</p>
+        <Link to="about" className="btn btn-primary btn-lg">learn more</Link>
+        <TestComp />
+      </div>
+    );
+  }
 }
 
 export default HomePage;
