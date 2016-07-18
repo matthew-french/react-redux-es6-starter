@@ -37,7 +37,7 @@ class ManageCoursePage extends React.Component {
 
 ManageCoursePage.propTypes = {
   course: PropTypes.object.isRequired,
-  authors: PropTypes.array.isrequired
+  authors: PropTypes.array.isRequired
 };
 
 function mapStateToProps (state, ownProps) {
