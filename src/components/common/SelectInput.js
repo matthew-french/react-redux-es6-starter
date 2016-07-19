@@ -1,17 +1,16 @@
 import React, {PropTypes} from 'react';
 
 const SelectInput = ({name, label, onChange, defaultOption, value, error, options}) => {
-  let wrapperClass = 'form-group';
-
   return (
-    <div className={wrapperClass}>
+    <div className="form-group">
       <label htmlFor={name}>{label}</label>
       <div className="field">
+        {/* Note, value is set here rather than on the option - docs: https://facebook.github.io/react/docs/forms.html */}
         <select
-          type={name}
+          name={name}
           value={value}
           onChange={onChange}
-          clasName="form-control">
+          className="form-control">
           <option value="">{defaultOption}</option>
           {options.map((option) => {
             return <option key={option.value} value={option.value}>{option.text}</option>;
@@ -25,13 +24,13 @@ const SelectInput = ({name, label, onChange, defaultOption, value, error, option
 };
 
 SelectInput.propTypes = {
-  name:          PropTypes.string.isRequired,
-  label:         PropTypes.string.isRequired,
-  onChange:      PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   defaultOption: PropTypes.string,
-  value:         PropTypes.string,
-  error:         PropTypes.string,
-  options:       PropTypes.arrayOf(PropTypes.object)
+  value: PropTypes.string,
+  error: PropTypes.string,
+  options: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default SelectInput;
