@@ -5,8 +5,7 @@ const AuthorListRow = ({author}) => {
   return (
     <tr>
       <td><Link to={'/author/' + author.id}>{author.id}</Link></td>
-      <td>{author.firstName}</td>
-      <td>{author.lastName}</td>
+      <td>{author.firstName} {author.lastName}</td>
     </tr>
   );
 };

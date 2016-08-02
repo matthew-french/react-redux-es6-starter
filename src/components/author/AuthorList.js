@@ -7,8 +7,7 @@ const AuthorList = ({authors}) => {
       <thead>
         <tr>
           <th>Key</th>
-          <th>First Name</th>
-          <th>Last Name</th>
+          <th>Name</th>
         </tr>
       </thead>
       <tbody>
