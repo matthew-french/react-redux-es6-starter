@@ -9,6 +9,8 @@ const Header = ({loading}) => {
       {" | "}
       <IndexLink to="/courses" activeClassName="active">Courses</IndexLink>
       {" | "}
+      <IndexLink to="/authors" activeClassName="active">Authors</IndexLink>
+      {" | "}
       <Link to="/about" activeClassName="active">About</Link>
       {loading && <LoadingDots interval={100} dots={20}/>}
     </nav>
