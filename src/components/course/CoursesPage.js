@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseList from './CourseList';
 import {browserHistory} from 'react-router';
+import {authorsFormattedForDropdown} from '../../selectors/selectors';
 
 class CoursesPage extends React.Component {
   constructor(props, context) {
@@ -16,7 +17,9 @@ class CoursesPage extends React.Component {
   }
 
   render() {
+
     const {courses} = this.props;
+    const {authors} = this.props;
 
     return (
       <div>
@@ -25,7 +28,7 @@ class CoursesPage extends React.Component {
           value="Add Course"
           className="btn btn-primary"
           onClick={this.redirectToAddCoursePage}/>
-        <CourseList courses={courses}/>
+        <CourseList courses={courses} authors={authors}/>
       </div>
     );
   }
@@ -33,12 +36,14 @@ class CoursesPage extends React.Component {
 
 CoursesPage.propTypes = {
   courses: PropTypes.array.isRequired,
+  authors: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    courses: state.courses
+    courses: state.courses,
+    authors: state.authors
   };
 }
 

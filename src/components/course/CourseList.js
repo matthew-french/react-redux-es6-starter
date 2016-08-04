@@ -1,8 +1,10 @@
 import React, {PropTypes} from 'react';
 import CourseListRow from './CourseListRow';
+import {getAuthorById} from '../../selectors/selectors';
 
-const CourseList = ({courses}) => {
+const CourseList = ({courses,authors}) => {
   return (
+    <div>
     <table className="table">
       <thead>
         <tr>
@@ -15,15 +17,21 @@ const CourseList = ({courses}) => {
       </thead>
       <tbody>
         {courses.map(course =>
-          <CourseListRow key={course.id} course={course} />
+          <CourseListRow
+            key={course.id}
+            course={course}
+            author={getAuthorById(authors,course.authorId)}
+          />
         )}
       </tbody>
     </table>
+    </div>
   );
 };
 
 CourseList.propTypes = {
-  courses: PropTypes.array.isRequired
+  courses: PropTypes.array.isRequired,
+  authors: PropTypes.array.isRequired
 };
 
 export default CourseList;
