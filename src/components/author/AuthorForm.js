@@ -1,7 +1,7 @@
 import React from 'react';
 import TextInput from '../common/TextInput';
 
-const AuthorForm = ({author, onSave, onChange, saving, errors}) => {
+const AuthorForm = ({onDelete, author, onSave, onChange, saving, errors}) => {
   return (
     <form>
       <h1>Manage Author</h1>
@@ -25,6 +25,12 @@ const AuthorForm = ({author, onSave, onChange, saving, errors}) => {
         value={saving ? 'Saving...' : 'Save'}
         className="btn btn-primary"
         onClick={onSave}/>
+
+      <input
+        type="submit"
+        value={'delete'}
+        className="btn btn-primary"
+        onClick={onDelete}/>
     </form>
   );
 };
@@ -34,7 +40,8 @@ AuthorForm.propTypes = {
   onSave: React.PropTypes.func.isRequired,
   onChange: React.PropTypes.func.isRequired,
   saving: React.PropTypes.bool,
-  errors: React.PropTypes.object
+  errors: React.PropTypes.object,
+  onDelete: React.PropTypes.func.isRequired
 };
 
 export default AuthorForm;
