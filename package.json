@@ -20,7 +20,8 @@
   "author": "Cory House",
   "license": "MIT",
   "engines": {
-    "node": "6.1.0"
+    "node": "6.1.0",
+    "npm": "3.9.5"
   },
   "dependencies": {
     "babel-cli": "6.8.0",
