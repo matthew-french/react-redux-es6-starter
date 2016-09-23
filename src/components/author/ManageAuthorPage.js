@@ -52,20 +52,6 @@ export class ManageAuthorPage extends React.Component {
     return formIsValid;
   }
 
-  deleteAuthor(event) {
-    event.preventDefault();
-
-    this.setState({saving: true});
-
-    this.props.actions.deleteAuthor(this.state.author)
-      .then(() => this.redirect())
-      .catch(error =>{
-        toastr.error(error);
-        this.setState({saving: false});
-      });
-  }
-
-
   saveAuthor(event) {
     event.preventDefault();
 

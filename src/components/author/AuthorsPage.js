@@ -1,15 +1,23 @@
 import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
 import * as authorActions from '../../actions/authorActions';
-import AuthorList from './AuthorList';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import {browserHistory} from 'react-router';
+import AuthorList from './AuthorList';
+import toastr from 'toastr';
 
 class AuthorsPage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
+    this.deleteAuthor = this.deleteAuthor.bind(this);
     this.redirectToAddAuthorPage = this.redirectToAddAuthorPage.bind(this);
+  }
+
+  deleteAuthor(event, authorId) {
+    event.preventDefault();
+    this.props.deleteAuthor(authorId);
+    toastr.success('Author deleted.');
   }
 
   redirectToAddAuthorPage() {
@@ -18,34 +26,48 @@ class AuthorsPage extends React.Component {
 
   render() {
     const {authors} = this.props;
-
     return (
       <div>
         <h1>Authors</h1>
-        <input type="submit"
-          value="Add Course"
-          className="btn btn-primary"
-          onClick={this.redirectToAddAuthorPage}/>
-        <AuthorList authors={authors}/>
+        <input type="submit" value="Add Author" className="btn btn-primary" onClick={this.redirectToAddAuthorPage}/>
+        {
+          authors.length > 0 &&
+          <AuthorList
+            authors={authors}
+            deleteAuthor={this.deleteAuthor}/>
+        }
       </div>
     );
   }
 }
 
 AuthorsPage.propTypes = {
-  authors: PropTypes.array.isRequired
+  // Data
+  authors: PropTypes.array.isRequired,
+
+  // Actions
+  deleteAuthor: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    authors: state.authors
+    authors: [...state.authors].sort((a, b) => a.firstName > b.firstName)
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(authorActions, dispatch)
+    deleteAuthor: authorId => dispatch(authorActions.deleteAuthor(authorId))
   };
+
+  //alternative:
+  // return {
+  //   actions: bindActionCreators(authorThunks, dispatch)
+  // };
+
+  // Then above, you reference via this.props.actions.loadAuthors above instead.
+  // A little less typing, also less power to specify the exact desired shape
+  // since you now expose all the actions under an actions object.
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthorsPage);

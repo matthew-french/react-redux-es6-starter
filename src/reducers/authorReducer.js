@@ -21,10 +21,7 @@ export default function authorReducer(state = initialState.authors, action) {
 
     case types.DELETE_AUTHOR_SUCCESS:
       debugger;
-      return [
-        ...state.filter(author => author.id !== action.author.id),
-        Object.assign({}, action.author)
-      ];
+      return state.filter((author) => author.id !== action.id);
 
     default:
       return state;
