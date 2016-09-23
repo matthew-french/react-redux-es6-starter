@@ -2,6 +2,7 @@
   "name": "ps-redux",
   "version": "1.0.0",
   "description": "Starter kit for React and Redux Pluralsight course by Cory House",
+  "main": "App.js",
   "scripts": {
     "prestart": "babel-node tools/startMessage.js",
     "start": "npm-run-all --parallel test:watch open:src lint:watch",
@@ -26,6 +27,7 @@
     "babel-polyfill": "6.8.0",
     "bootstrap": "3.3.6",
     "jquery": "2.2.3",
+    "npm-run-all": "^1.8.0",
     "react": "15.0.2",
     "react-dom": "15.0.2",
     "react-redux": "4.4.5",
